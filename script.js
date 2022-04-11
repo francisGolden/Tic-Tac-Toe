@@ -18,23 +18,41 @@ const gbModule = ((function() {
     return {metodo}
 }))()
 
-for (element of box) {
-    element.innerHTML = "O"
-}
+
+
+
 
 const dcModule = (function() {
     function metodo() {
-        console.log(`ciao sono il contenuto di dcModule`)
-        
+        for (element of box) {
+            i = Array.from(box).indexOf(element)
+            element.innerHTML = gameB[i]
+        }
 
     }
     function displayInteraction () {
         
         box.forEach(boxx => {
             boxx.addEventListener("click", function() {
-                boxx.innerHTML = "X"
+                // boxx.innerHTML = "X"
+
+                
+                // for (element of box) {
+                //     i = Array.from(box).indexOf(element)
+                //     console.log(gameB)
+                //     console.log(box)
+                //     gameB[i] = box[i]
+                // }
+                // dcModule.metodo()
+                i = Array.from(box).indexOf(boxx)
+                gameB[i] = "X"
+
+                console.log(i)
+                dcModule.metodo()
+                console.log(gameB)
             })
         })
+        
     }
 
     return {metodo, displayInteraction}
