@@ -1,5 +1,7 @@
-let gameB = ["O", "O", "O", "O", "O", "O", "O", "O", "O"]
+let gameB = ["", "", "", "", "", "", "", "", ""]
 let box = document.querySelectorAll(".box")
+let clicks = 0;
+
 
 const playerFactory = (name, score) => {
     const sayHello = () => console.log(`hello, I'm ${name}`)
@@ -18,10 +20,6 @@ const gbModule = ((function() {
     return {metodo}
 }))()
 
-
-
-
-
 const dcModule = (function() {
     function metodo() {
         for (element of box) {
@@ -34,22 +32,47 @@ const dcModule = (function() {
         
         box.forEach(boxx => {
             boxx.addEventListener("click", function() {
-                // boxx.innerHTML = "X"
-
                 
-                // for (element of box) {
-                //     i = Array.from(box).indexOf(element)
-                //     console.log(gameB)
-                //     console.log(box)
-                //     gameB[i] = box[i]
-                // }
-                // dcModule.metodo()
+                clicks += 1
+                console.log(clicks)
                 i = Array.from(box).indexOf(boxx)
                 gameB[i] = "X"
 
-                console.log(i)
+                
                 dcModule.metodo()
                 console.log(gameB)
+              
+                if (gameB[0] == "X" && gameB[1] == "X" && gameB[2] == "X") {
+                  player1.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  console.log(player1.score)
+                  dcModule.metodo()
+                } else if (gameB[0] == "X" && gameB[3] == "X" && gameB[6] == "X") {
+                  player1.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  console.log(player1.score)
+                  dcModule.metodo()
+                } else if (gameB[0] == "X" && gameB[4] == "X" && gameB[8] == "X") {
+                  player1.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  console.log(player1.score)
+                  dcModule.metodo()
+                } else if (gameB[1] == "X" && gameB[4] == "X" && gameB[7] == "X") {
+                  player1.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  console.log(player1.score)
+                  dcModule.metodo()
+                } else if (gameB[2] == "X" && gameB[4] == "X" && gameB[6] == "X") {
+                  player1.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  console.log(player1.score)
+                  dcModule.metodo()
+                } else if (gameB[2] == "X" && gameB[5] == "X" && gameB[8] == "X") {
+                  player1.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  console.log(player1.score)
+                  dcModule.metodo()
+                }
             })
         })
         
@@ -65,9 +88,10 @@ player1.sayHello();
 player2.sayHello();
 
 
-// for (element of gameB) {
-//     console.log(element)
-    
-// }
+
 
 dcModule.displayInteraction()
+
+// added click counter
+
+// TO DO: add multiplayer functionality
