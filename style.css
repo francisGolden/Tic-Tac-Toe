@@ -31,7 +31,8 @@ html, body {
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     height: 50vh;
-    width: 50vw;
+    width: 90vw;
+    max-width: 700px;
     background-color: #B9F8D3;
     border: 0.01px solid white;
     

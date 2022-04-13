@@ -39,30 +39,30 @@ const dcModule = (function() {
                 
                 i = Array.from(box).indexOf(boxx)
                 
-                
-                gameB[i] = "X"
+                if (boxx.textContent == "") {
+                    gameB[i] = "X"
 
-                
-                let randomI = Math.floor(Math.random() * 10);
-                
-                do {
-                  randomI = Math.floor(Math.random() * 10);
-                } while (gameB[randomI] != "")
+                    let randomI = Math.floor(Math.random() * 10);
+                  
+                  do {
+                    randomI = Math.floor(Math.random() * 10);
+                  } while (gameB[randomI] != "")
 
-                if (gameB[randomI] != "X" && gameB[randomI] != "O") {
-                  console.log(randomI) 
-                  gameB[randomI] = "O"
+                  if (gameB[randomI] != "X" && gameB[randomI] != "O") {
+                    console.log(randomI) 
+                    gameB[randomI] = "O"
+                    
+                  } else {
+                    randomI = Math.floor(Math.random() * 10);
+                    console.log(randomI)
+                    gameB[randomI] = "O"
+                    
+                  }                
                   
-                } else {
-                  randomI = Math.floor(Math.random() * 10);
-                  console.log(randomI)
-                  gameB[randomI] = "O"
-                  
-                }                
-                
-                dcModule.metodo()
-                
-              
+                  dcModule.metodo()
+
+                }
+            
                 if (gameB[0] == "X" && gameB[1] == "X" && gameB[2] == "X") {
                   player1.score += 1
                   gameB = ["", "", "", "", "", "", "", "", ""]
