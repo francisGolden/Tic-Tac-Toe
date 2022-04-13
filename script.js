@@ -1,6 +1,8 @@
 let gameB = ["", "", "", "", "", "", "", "", ""]
 let box = document.querySelectorAll(".box")
 let clicks = 0;
+playerScore = document.querySelector("#player")
+aiScore = document.querySelector("#ai")
 
 
 const playerFactory = (name, score) => {
@@ -36,7 +38,13 @@ const dcModule = (function() {
                 clicks += 1
                 console.log(clicks)
                 i = Array.from(box).indexOf(boxx)
-                gameB[i] = "X"
+                
+                if (clicks % 2 == 0) {
+                  gameB[i] = "X"
+                } else {
+                  gameB[i] = "O"
+                }
+                  
 
                 
                 dcModule.metodo()
@@ -73,6 +81,42 @@ const dcModule = (function() {
                   console.log(player1.score)
                   dcModule.metodo()
                 }
+
+                if (gameB[0] == "O" && gameB[1] == "O" && gameB[2] == "O") {
+                  player2.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  console.log(player2.score)
+                  dcModule.metodo()
+                } else if (gameB[0] == "O" && gameB[3] == "O" && gameB[6] == "O") {
+                  player2.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  console.log(player2.score)
+                  dcModule.metodo()
+                } else if (gameB[0] == "O" && gameB[4] == "O" && gameB[8] == "O") {
+                  player2.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  console.log(player2.score)
+                  dcModule.metodo()
+                } else if (gameB[1] == "O" && gameB[4] == "O" && gameB[7] == "O") {
+                  player2.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  console.log(player2.score)
+                  dcModule.metodo()
+                } else if (gameB[2] == "O" && gameB[4] == "O" && gameB[6] == "O") {
+                  player2.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  console.log(player2.score)
+                  dcModule.metodo()
+                } else if (gameB[2] == "O" && gameB[5] == "O" && gameB[8] == "O") {
+                  player2.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  console.log(player2.score)
+                  dcModule.metodo()
+                }
+
+                ai.innerHTML = `AI: ${player2.score}`
+                player.innerHTML = `player: ${player1.score}` 
+
             })
         })
         
@@ -94,4 +138,6 @@ dcModule.displayInteraction()
 
 // added click counter
 
-// TO DO: add multiplayer functionality
+// added multiplayer functionality
+
+// TO DO: add AI functionality
