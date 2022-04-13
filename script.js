@@ -1,8 +1,8 @@
 let gameB = ["", "", "", "", "", "", "", "", ""]
 let box = document.querySelectorAll(".box")
 let clicks = 0;
-playerScore = document.querySelector("#player")
-aiScore = document.querySelector("#ai")
+let playerScore = document.querySelector("#player")
+let aiScore = document.querySelector("#ai")
 
 
 const playerFactory = (name, score) => {
@@ -35,50 +35,68 @@ const dcModule = (function() {
         box.forEach(boxx => {
             boxx.addEventListener("click", function() {
                 
-                clicks += 1
-                console.log(clicks)
+                
+                
                 i = Array.from(box).indexOf(boxx)
                 
-                if (clicks % 2 == 0) {
-                  gameB[i] = "X"
-                } else {
-                  gameB[i] = "O"
-                }
-                  
+                
+                gameB[i] = "X"
 
                 
+                let randomI = Math.floor(Math.random() * 10);
+                
+                do {
+                  randomI = Math.floor(Math.random() * 10);
+                } while (gameB[randomI] != "")
+
+                if (gameB[randomI] != "X" && gameB[randomI] != "O") {
+                  console.log(randomI) 
+                  gameB[randomI] = "O"
+                  
+                } else {
+                  randomI = Math.floor(Math.random() * 10);
+                  console.log(randomI)
+                  gameB[randomI] = "O"
+                  
+                }                
+                
                 dcModule.metodo()
-                console.log(gameB)
+                
               
                 if (gameB[0] == "X" && gameB[1] == "X" && gameB[2] == "X") {
                   player1.score += 1
                   gameB = ["", "", "", "", "", "", "", "", ""]
-                  console.log(player1.score)
+                  
                   dcModule.metodo()
                 } else if (gameB[0] == "X" && gameB[3] == "X" && gameB[6] == "X") {
                   player1.score += 1
                   gameB = ["", "", "", "", "", "", "", "", ""]
-                  console.log(player1.score)
+                  
                   dcModule.metodo()
                 } else if (gameB[0] == "X" && gameB[4] == "X" && gameB[8] == "X") {
                   player1.score += 1
                   gameB = ["", "", "", "", "", "", "", "", ""]
-                  console.log(player1.score)
+                  
                   dcModule.metodo()
                 } else if (gameB[1] == "X" && gameB[4] == "X" && gameB[7] == "X") {
                   player1.score += 1
                   gameB = ["", "", "", "", "", "", "", "", ""]
-                  console.log(player1.score)
+                  
                   dcModule.metodo()
                 } else if (gameB[2] == "X" && gameB[4] == "X" && gameB[6] == "X") {
                   player1.score += 1
                   gameB = ["", "", "", "", "", "", "", "", ""]
-                  console.log(player1.score)
+                  
                   dcModule.metodo()
                 } else if (gameB[2] == "X" && gameB[5] == "X" && gameB[8] == "X") {
                   player1.score += 1
                   gameB = ["", "", "", "", "", "", "", "", ""]
-                  console.log(player1.score)
+                  
+                  dcModule.metodo()
+                } else if (gameB[6] == "X" && gameB[7] == "X" && gameB[8] == "X") {
+                  player1.score += 1
+                  gameB = ["", "", "", "", "", "", "", "", ""]
+                  
                   dcModule.metodo()
                 }
 
@@ -114,9 +132,22 @@ const dcModule = (function() {
                   dcModule.metodo()
                 }
 
-                ai.innerHTML = `AI: ${player2.score}`
-                player.innerHTML = `player: ${player1.score}` 
+                
 
+                if (player1.score == 3) {
+                  alert("Player wins. Restart the game?")
+                  player1.score = 0
+                  player2.score = 0
+                  dcModule.metodo()
+                } else if (player2.score == 3) {
+                  alert("AI wins. Restart the game?")
+                  player1.score = 0
+                  player2.score = 0
+                  dcModule.metodo()
+                }
+
+                ai.innerHTML = `AI: ${player2.score}`
+                player.innerHTML = `Player: ${player1.score}` 
             })
         })
         
@@ -136,8 +167,10 @@ player2.sayHello();
 
 dcModule.displayInteraction()
 
+
+
 // added click counter
 
 // added multiplayer functionality
 
-// TO DO: add AI functionality
+// added AI functionality
